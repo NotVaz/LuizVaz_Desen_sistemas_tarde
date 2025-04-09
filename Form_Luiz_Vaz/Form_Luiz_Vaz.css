@@ -1,0 +1,15 @@
+body{
+    background-color: rgb(243, 207, 154);
+    color: firebrick;
+}
+h1{
+    color: goldenrod;
+}
+
+label{
+    color: firebrick;
+}
+
+table{
+    background-color: rgb(243, 179, 106);
+}

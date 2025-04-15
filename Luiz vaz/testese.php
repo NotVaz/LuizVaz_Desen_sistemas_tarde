@@ -21,9 +21,9 @@
     <?php
         $a=17;
         if ($a>17)
-            print "maior de idade.<br/>"
-            else
-            print "menor de idade.<br/>"
+            print "maior de idade.<br/>";
+        else
+            print "menor de idade.<br/>";
     ?>
 </body>
 </html>

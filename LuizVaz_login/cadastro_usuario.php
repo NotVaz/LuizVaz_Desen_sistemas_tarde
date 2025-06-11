@@ -6,6 +6,7 @@ require_once 'conexao.php';
 
 if($_SESSION['perfil']!=1){
     echo"acesso negado";
+    exit;
 
 }
 
@@ -13,20 +14,20 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $nome=$_POST['nome'];
     $email=$_POST['email'];
     $senha= password_hash($_POST['senha'],PASSWORD_DEFAULT);
-    $id_perfil = $_POST('id_perfil');
+    $id_perfil = $_POST['id_perfil'];
 
     $sql="INSERT INTO usuario(nome,email,senha,id_perfil) VALUES (:nome,:email,:senha,:id_perfil)";
-    $stmt=$pdo->prepare $sql;
+    $stmt= $pdo->prepare($sql);
     $stmt -> bindParam(':nome',$nome);
-    $stmt -> bindParam(':email',$email);v 
+    $stmt -> bindParam(':email',$email);
     $stmt -> bindParam(':senha',$senha);
     $stmt -> bindParam(':id_perfil',$id_perfil);   
 
-if($smt->execute()){
-    echo "<script>alert('Usuariocadastrado com sucesso!(');</scrpit>";
+if($stmt->execute()){
+    echo "<script>alert('Usuariocadastrado com sucesso!(');</script>";
 
 }else{
-    echo "<script>alert('Erro ao cadastrar!(');</scrpit>";
+    echo "<script>alert('Erro ao cadastrar!(');</script>";
 }
 
 }
@@ -51,7 +52,7 @@ if($smt->execute()){
         <label for="senha">senha:</label>
         <input type="password" id="senha" name="senha" required>
 
-        <label for="id_pefil">perfil:</label>
+        <label for="id_perfil">perfil:</label>
         <select id="id_perfil" name="id_perfil">
             <option value="1">Admistrador</option>
             <option value="2">Secretaria</option>
